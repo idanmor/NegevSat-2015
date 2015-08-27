@@ -1,0 +1,2 @@
+rxtx  בתוך ה bin     
+lib/ext קובץ rxtx..
