@@ -1,0 +1,162 @@
+sateliteToGroundStation protocol
+
+STATIC Packet : informaion about the status of satelite component 
+
+xml protocol example:
+<?xml version="1.0" encoding="utf-8"?>
+
+<packet>
+
+        <downstreamPacket>
+
+                <type>Static</type>
+
+                <state>INIT_STATE</state>
+
+                <Module time="20140618102230">
+
+                        <Info name="Sband" status="STANDBY"/>
+
+                </Module>
+
+                <Module time="20140618102230">
+
+                        <Info name="Temperature" status="ON"/>
+
+                </Module>
+
+                <Module time="20140618102230">
+
+                        <Info name="Energy" status="ON"/>
+
+                </Module>
+
+                <Module time="20140618102230">
+
+                        <Info name="SolarPanels" status="ON"/>
+
+                </Module>
+
+                <Module time="20140618102230">
+
+                        <Info name="Payload" status="STANDBY"/>
+
+                </Module>
+
+                <Module time="20140618102230">
+
+                        <Info name="ThermalControl" status="STANDBY"/>
+
+                </Module>
+
+        </downstreamPacket>
+
+</packet>
+
+ENERGY Packet:
+<?xml version="1.0" encoding="utf-8"?>
+
+<packet>
+
+        <downstreamPacket>
+
+                <type>Energy</type>
+
+                <EnergySample time="20140618102230">
+
+                        <Battery1 current="2" voltage="4"/>
+
+                </EnergySample>
+
+                <EnergySample time="20140618102233">
+
+                        <Battery1 current="2" voltage="4"/>
+
+                </EnergySample>
+
+                <EnergySample time="20140618102236">
+
+                        <Battery1 current="2" voltage="4"/>
+
+                </EnergySample>
+
+                <EnergySample time="20140618102239">
+
+                        <Battery1 current="2" voltage="4"/>
+
+                </EnergySample>
+
+                <EnergySample time="20140618102242">
+
+                        <Battery1 current="2" voltage="4"/>
+
+                </EnergySample>
+
+        </downstreamPacket>
+
+</packet>
+
+TEMPERATURE Packet
+:<?xml version="1.0" encoding="utf-8"?>
+
+<packet>
+
+        <downstreamPacket>
+
+                <type>Temperature</type>
+
+                <TemperatureSample time="20140618102230">
+
+                        <Sensor1 temp="20"/>
+
+                </TemperatureSample>
+
+                <TemperatureSample time="20140618102233">
+
+                        <Sensor1 temp="20"/>
+
+                </TemperatureSample>
+
+                <TemperatureSample time="20140618102236">
+
+                        <Sensor1 temp="20"/>
+
+                </TemperatureSample>
+
+                <TemperatureSample time="20140618102239">
+
+                        <Sensor1 temp="20"/>
+
+                </TemperatureSample>
+
+                <TemperatureSample time="20140618102242">
+
+                        <Sensor1 temp="20"/>
+
+                </TemperatureSample>
+
+        </downstreamPacket>
+
+</packet>
+
+Binary Protocol:
+
+STATIC Packet:
+1 byte opCode = 0|1byte numberOfSamples = N|10 byte statusInfo1|10 bytes statusInfo2 |....|10 bytes statusInfoN
+	statusInfo:
+	1 byte componentCode| 8 byte timeSampleWasRecorded | 1 byte status
+
+ENERGY Packet:
+1 byte opCode = 1|1byte numberOfSamples = N|16 byte eneSample1|16 bytes eneSample2 |....|16 byte eneSampleN
+
+	eneSample1:
+	8 bytes time|4bytes current|4 bytes voltage
+
+TEMPERATURE Packet:
+1 byte opCode = 2|1byte numberOfSamples = N|12 byte tempSample1|12 bytes sample2 |....|12 byte sampleN
+
+tempSample: 
+8 bytes time|4bytes temp
+
+
+"HALT;" nl
