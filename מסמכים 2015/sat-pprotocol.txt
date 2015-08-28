@@ -159,4 +159,7 @@ tempSample:
 8 bytes time|4bytes temp
 
 
+***** Note ******
+we used delimiter type message seperation, the delimiter is 10 in decimal.
+we used used escape character in order to escape the delimiter , the escape character is 11 in decimal 
 "HALT;" nl
